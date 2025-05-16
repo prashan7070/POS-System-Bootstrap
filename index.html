@@ -237,6 +237,98 @@
         </div>
       </section>
 
+      <!-- Orders Section -->
+      <section id="orders" class="section">
+        <div class="content-section container-fluid">
+          <h2 class="text-center mb-3">Order Management</h2>
+          <div class="row mb-2">
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Cus. ID">
+              <button class="btn btn-outline-secondary mt-1 w-100">
+                <i class="bi bi-search"></i> Search
+              </button>
+            </div>
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Order ID">
+            </div>
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Date" value="2025/04/19">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Item ID">
+              <button class="btn btn-outline-secondary mt-1 w-100">
+                <i class="bi bi-search"></i> Search
+              </button>
+            </div>
+            <div class="col-md-2 mb-2">
+              <input type="text" class="form-control" placeholder="Quantity">
+            </div>
+            <div class="col-md-2 mb-2">
+              <input type="text" class="form-control" placeholder="Unit Price">
+            </div>
+            <div class="col-md-2 mb-2">
+              <input type="text" class="form-control" placeholder="Discount">
+            </div>
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Total (Rs)">
+            </div>
+          </div>
+          <div class="table-responsive mb-2">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Unit Price</th>
+                <th>Discount</th>
+                <th>Qty</th>
+                <th>Total (Rs)</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>I001</td>
+                <td>Laptop</td>
+                <td>150,000</td>
+                <td>5%</td>
+                <td>2</td>
+                <td>285,000</td>
+              </tr>
+              <tr>
+                <td>I002</td>
+                <td>Mouse</td>
+                <td>1,500</td>
+                <td>0%</td>
+                <td>5</td>
+                <td>7,500</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="total-section mb-2">
+            <p><strong>Total (Rs):</strong> 292,500</p>
+            <p><strong>Discount:</strong> 15,000</p>
+            <p><strong>Amount:</strong> 277,500</p>
+            <p><strong>Balance:</strong> 0</p>
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Cash Payment">
+            </div>
+            <div class="col-md-3 mb-2">
+              <input type="text" class="form-control" placeholder="Card Payment">
+            </div>
+            <div class="col-md-6 d-flex justify-content-end gap-2">
+              <button class="btn btn-success">Place Order</button>
+              <button class="btn btn-danger">Print Bill</button>
+              <button class="btn btn-outline-secondary">Re Print</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
