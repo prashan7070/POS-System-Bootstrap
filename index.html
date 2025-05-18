@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" type="image/icon" href="">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style/style.css" rel="stylesheet">
+  <link href="Assets/style/style.css" rel="stylesheet">
 
 </head>
 
@@ -25,16 +25,16 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
+              <li id="btnHome" class="nav-item">
                 <a class="nav-link active" href="#home" onclick="showSection('home')">Home</a>
               </li>
-              <li class="nav-item">
+              <li id="btnCustomer" class="nav-item">
                 <a class="nav-link" href="#customer" onclick="showSection('customer')">Customer</a>
               </li>
-              <li class="nav-item">
+              <li id="btnItem" class="nav-item">
                 <a class="nav-link" href="#item" onclick="showSection('item')">Item</a>
               </li>
-              <li class="nav-item">
+              <li id="btnOrders" class="nav-item">
                 <a class="nav-link" href="#orders" onclick="showSection('orders')">Orders</a>
               </li>
             </ul>
@@ -240,7 +240,7 @@
       <!-- Orders Section -->
       <section id="orders" class="section">
         <div class="content-section container-fluid">
-          <h2 class="text-center mb-3">Order Management</h2>
+<!--          <h2 class="text-center mb-3">Order Management</h2>-->
           <div class="row mb-2">
             <div class="col-md-3 mb-2">
               <input type="text" class="form-control" placeholder="Cus. ID">
@@ -330,9 +330,65 @@
       </section>
 
 
+      <script src="Assets/lib/jquery-3.7.1.min.js" ></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+
+          function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+              section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+              link.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+          })
+
+          // $("#home").css("display", "block");
+          // $("#customer").css("display", "none");
+          // $("#item").css("display", "none");
+          // $("#orders").css("display", "none");
+          //
+          //
+          // $("#btnCustomer").on("click",function (){
+          //
+          //   $("#customer").css("display", "block");
+          //   $("#home").css("display", "none");
+          //   $("#item").css("display", "none");
+          //   $("#orders").css("display", "none");
+          //
+          // })
+          //
+          // $("#btnItem").on("click",function (){
+          //   $("#item").css("display", "block");
+          //   $("#orders").css("display", "none");
+          //   $("#customer").css("display", "none");
+          //   $("#home").css("display", "none");
+          // })
+          //
+          // $("#btnOrders").on("click",function (){
+          //   $("#orders").css("display", "block");
+          //   $("#item").css("display", "none");
+          //   $("#customer").css("display", "none");
+          //   $("#home").css("display", "none");
+          // })
+          //
+          // $("#btnHome").on("click",function (){
+          //   $("#home").css("display", "block");
+          //   $("#item").css("display", "none");
+          //   $("#customer").css("display", "none");
+          //   $("#orders").css("display", "none");
+          // })
+
+
+
+      </script>
 
 </body>
 </html>
