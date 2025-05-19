@@ -190,3 +190,66 @@ $('#item-update').on('click', function(){
 })
 
 
+
+$('#item-search').on('click',function(){
+
+    let itemId = $('#input-itemId').val();
+
+    if (itemId===''){
+
+        Swal.fire({
+            title: 'Error!',
+            text: 'Enter correct item Id',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+
+    } else {
+
+        let index = item_db.findIndex(item => item.itemId === itemId);
+        console.log(index);
+
+        if (index<0) {
+
+            Swal.fire({
+                title: 'Error!',
+                text: 'item not found',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+
+
+        }else {
+
+            let obj = item_db[index];
+            console.log(obj);
+
+            let itemId = obj.itemId;
+            let item_name = obj.item_name;
+            let qty = obj.qty;
+            let unitPrice = obj.unitPrice;
+
+            $("#itemId").val(itemId);
+            $("#item_name").val(item_name);
+            $("#qty").val(qty);
+            $("#unitPrice").val(unitPrice);
+
+
+        }
+
+    }
+
+})
+
+
+$('#item-reset').on('click',function(){
+
+    $("#itemId").val('');
+    $("#item_name").val('');
+    $("#qty").val('');
+    $("#unitPrice").val('');
+
+
+})
+
+

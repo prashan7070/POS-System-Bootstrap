@@ -192,3 +192,65 @@ $('#customer-update').on('click',function(){
     }
 
 })
+
+
+$('#customer-search').on('click',function(){
+
+    let customId = $('#input-customId').val();
+
+    if (customId===''){
+
+        Swal.fire({
+            title: 'Error!',
+            text: 'Enter correct customer Id',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+
+    } else {
+
+        let index = customer_db.findIndex(customer => customer.customId === customId);
+        console.log(index);
+
+        if (index<0) {
+
+            Swal.fire({
+                title: 'Error!',
+                text: 'customer not found',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+
+
+        }else {
+
+            let obj = customer_db[index];
+            console.log(obj);
+
+            let customId = obj.customId;
+            let custom_name = obj.custom_name;
+            let address = obj.address;
+            let phone = obj.phone;
+
+            $("#cust_id").val(customId);
+            $("#cust_name").val(custom_name);
+            $("#address").val(address);
+            $("#mobile").val(phone);
+
+
+        }
+
+    }
+
+})
+
+
+$('#customer-reset').on('click',function(){
+
+    $('#cust_id').val('');
+    $('#cust_name').val('');
+    $('#address').val('');
+    $('#mobile').val('');
+
+
+})
