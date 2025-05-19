@@ -189,10 +189,6 @@ $('#customer-update').on('click',function(){
 
         }
 
-
-
     }
-
-
 
 })
