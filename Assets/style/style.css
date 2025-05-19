@@ -78,6 +78,7 @@ body {
     height: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .form-control, .btn {
     border-radius: 10px;
@@ -125,10 +126,14 @@ body {
     overflow-y: auto;
 
 }
+
+
 .table thead {
     background-color: #3498db;
     color: #ffffff;
 }
+
+
 .table tbody tr:hover {
     background-color: #f1f8ff;
     cursor: pointer;

@@ -121,48 +121,48 @@
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Customer ID">
+              <input type="text" id="cust_id" class="form-control" placeholder="Customer ID">
             </div>
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Name">
+              <input type="text" id="cust_name" class="form-control" placeholder="Name">
             </div>
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Address">
+              <input type="text" id="address" class="form-control" placeholder="Address">
             </div>
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Mobile">
+              <input type="text" id="mobile" class="form-control" placeholder="Mobile">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-md-6 d-flex justify-content-start gap-2">
-              <button class="btn btn-primary">Save</button>
-              <button class="btn btn-outline-secondary">Update</button>
-              <button class="btn btn-outline-secondary">Delete</button>
+              <button id="customer-save" type="button" class="btn btn-primary">Save</button>
+              <button id="customer-update" type="button" class="btn btn-outline-secondary">Update</button>
+              <button id="customer-delete" type="button" class="btn btn-outline-secondary">Delete</button>
             </div>
           </div>
-          <div class="table-responsive">
+          <div class="table-responsive customer-table-wrapper">
             <table class="table table-striped">
               <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Mobile</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <td>C001</td>
-                <td>John Doe</td>
-                <td>123 Main St</td>
-                <td>071-123-4567</td>
-              </tr>
-              <tr>
-                <td>C002</td>
-                <td>Jane Smith</td>
-                <td>456 Oak Ave</td>
-                <td>077-987-6543</td>
-              </tr>
+              <tbody id="cust-table-tbody">
+<!--              <tr>-->
+<!--                <td>C001</td>-->
+<!--                <td>John Doe</td>-->
+<!--                <td>123 Main St</td>-->
+<!--                <td>071-123-4567</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td>C002</td>-->
+<!--                <td>Jane Smith</td>-->
+<!--                <td>456 Oak Ave</td>-->
+<!--                <td>077-987-6543</td>-->
+<!--              </tr>-->
               </tbody>
             </table>
           </div>
@@ -189,23 +189,23 @@
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Item ID">
+              <input id="itemId" type="text" class="form-control" placeholder="Item ID">
             </div>
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Name">
+              <input id="item_name" type="text" class="form-control" placeholder="Name">
             </div>
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Quantity">
+              <input id="qty" type="text" class="form-control" placeholder="Quantity">
             </div>
             <div class="col-md-3 mb-3">
-              <input type="text" class="form-control" placeholder="Unit Price">
+              <input id="unitPrice" type="text" class="form-control" placeholder="Unit Price">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-md-6 d-flex justify-content-start gap-2">
-              <button class="btn btn-primary">Save</button>
-              <button class="btn btn-outline-secondary">Update</button>
-              <button class="btn btn-outline-secondary">Delete</button>
+              <button id="item-save" class="btn btn-primary">Save</button>
+              <button id="item-update" class="btn btn-outline-secondary">Update</button>
+              <button id="item-delete" class="btn btn-outline-secondary">Delete</button>
             </div>
           </div>
           <div class="table-responsive">
@@ -218,19 +218,19 @@
                 <th>Unit Price</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <td>I001</td>
-                <td>Laptop</td>
-                <td>10</td>
-                <td>150,000</td>
-              </tr>
-              <tr>
-                <td>I002</td>
-                <td>Mouse</td>
-                <td>50</td>
-                <td>1,500</td>
-              </tr>
+              <tbody id="item-table-tbody">
+<!--              <tr>-->
+<!--                <td>I001</td>-->
+<!--                <td>Laptop</td>-->
+<!--                <td>10</td>-->
+<!--                <td>150,000</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td>I002</td>-->
+<!--                <td>Mouse</td>-->
+<!--                <td>50</td>-->
+<!--                <td>1,500</td>-->
+<!--              </tr>-->
               </tbody>
             </table>
           </div>
@@ -333,6 +333,9 @@
       <script src="Assets/lib/jquery-3.7.1.min.js" ></script>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script type="module" src="controller/CustomerController.js"></script>
+      <script type="module" src="controller/ItemController.js"></script>
 
       <script>
 
