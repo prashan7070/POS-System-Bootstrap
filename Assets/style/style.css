@@ -1,7 +1,3 @@
-/* POS System - Main Stylesheet
-   Author: Custom CSS based on requested design
-   Description: Modern, simple and stylish CSS for POS system
-*/
 
 :root {
     --primary-color: #4a6bff;
@@ -72,9 +68,9 @@ body {
     background-color: var(--primary-color);
 }
 
-/* Sections - General */
+
 .section {
-    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
+    margin-top: 70px;
     padding: 15px 0;
 }
 
@@ -304,32 +300,29 @@ body {
     color: var(--primary-color);
 }
 
-/* Additional order section optimizations */
+
 #orders .form-control {
     height: calc(2rem + 2px);
 }
 
-/* Extra customizations for better viewport fit */
 #home.section {
-    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
+    margin-top: 70px;
 }
 
 #customer.section, #item.section {
-    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
+    margin-top: 70px;
 }
 
-/* Custom style for action buttons in cart table */
+
 #cart-table-tbody .btn-sm {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
 }
 
-/* Make sure all sections have proper spacing with fixed navbar */
 body {
     padding-top: 10px;
 }
 
-/* Fix for jQuery display toggling and active states */
 #btnCustomer.active a, #btnItem.active a, #btnOrders.active a, #btnHome.active a {
     color: var(--primary-color);
 }
@@ -344,20 +337,17 @@ body {
     background-color: var(--primary-color);
 }
 
-/* Enhance cart management in orders section */
 #orders .cart-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Make scrollbars less intrusive for order section */
 #orders .table-responsive::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
 
-/* Responsive adjustments - Maintained but modified */
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 16px;
@@ -386,7 +376,6 @@ body {
     }
 }
 
-/* Active section display */
 #home.active,
 #customer.active,
 #item.active,
@@ -394,12 +383,10 @@ body {
     display: block;
 }
 
-/* Utility classes */
 .gap-2 {
     gap: 0.5rem !important;
 }
 
-/* Animation effects */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -409,7 +396,6 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Table hover effects */
 .table tbody tr {
     transition: var(--transition);
 }
@@ -418,12 +404,10 @@ body {
     background-color: rgba(74, 107, 255, 0.05);
 }
 
-/* Cart item styling */
 #cart-table-tbody tr {
     position: relative;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
