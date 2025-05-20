@@ -26,22 +26,35 @@
           <div class="collapse navbar-collapse" id="navbarNav">
 
 
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--              <li id="btnHome" class="nav-item">-->
+<!--                <a class="nav-link active" href="#home" onclick="showSection('home')">Home</a>-->
+<!--              </li>-->
+<!--              <li id="btnCustomer" class="nav-item">-->
+<!--                <a class="nav-link" href="#customer" onclick="showSection('customer')">Customer</a>-->
+<!--              </li>-->
+<!--              <li id="btnItem" class="nav-item">-->
+<!--                <a class="nav-link" href="#item" onclick="showSection('item')">Item</a>-->
+<!--              </li>-->
+<!--              <li id="btnOrders" class="nav-item">-->
+<!--                <a class="nav-link" href="#orders" onclick="showSection('orders')">Orders</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+
             <ul class="navbar-nav ms-auto">
               <li id="btnHome" class="nav-item">
-                <a class="nav-link active" href="#home" onclick="showSection('home')">Home</a>
+                <a class="nav-link active" href="#home">Home</a>
               </li>
               <li id="btnCustomer" class="nav-item">
-                <a class="nav-link" href="#customer" onclick="showSection('customer')">Customer</a>
+                <a class="nav-link" href="#customer">Customer</a>
               </li>
               <li id="btnItem" class="nav-item">
-                <a class="nav-link" href="#item" onclick="showSection('item')">Item</a>
+                <a class="nav-link" href="#item">Item</a>
               </li>
               <li id="btnOrders" class="nav-item">
-                <a class="nav-link" href="#orders" onclick="showSection('orders')">Orders</a>
+                <a class="nav-link" href="#orders">Orders</a>
               </li>
             </ul>
-
-
 
 
           </div>
@@ -394,55 +407,55 @@
 
       <script>
 
-          function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-              section.classList.remove('active');
-            });
-            document.querySelectorAll('.nav-link').forEach(link => {
-              link.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
-          }
-          document.addEventListener('DOMContentLoaded', () => {
-            showSection('home');
+          // function showSection(sectionId) {
+          //   document.querySelectorAll('.section').forEach(section => {
+          //     section.classList.remove('active');
+          //   });
+          //   document.querySelectorAll('.nav-link').forEach(link => {
+          //     link.classList.remove('active');
+          //   });
+          //   document.getElementById(sectionId).classList.add('active');
+          //   document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
+          // }
+          // document.addEventListener('DOMContentLoaded', () => {
+          //   showSection('home');
+          // })
+
+          $("#home").css("display", "block");
+          $("#customer").css("display", "none");
+          $("#item").css("display", "none");
+          $("#orders").css("display", "none");
+
+
+          $("#btnCustomer").on("click",function (){
+
+            $("#customer").css("display", "block");
+            $("#home").css("display", "none");
+            $("#item").css("display", "none");
+            $("#orders").css("display", "none");
+
           })
 
-          // $("#home").css("display", "block");
-          // $("#customer").css("display", "none");
-          // $("#item").css("display", "none");
-          // $("#orders").css("display", "none");
-          //
-          //
-          // $("#btnCustomer").on("click",function (){
-          //
-          //   $("#customer").css("display", "block");
-          //   $("#home").css("display", "none");
-          //   $("#item").css("display", "none");
-          //   $("#orders").css("display", "none");
-          //
-          // })
-          //
-          // $("#btnItem").on("click",function (){
-          //   $("#item").css("display", "block");
-          //   $("#orders").css("display", "none");
-          //   $("#customer").css("display", "none");
-          //   $("#home").css("display", "none");
-          // })
-          //
-          // $("#btnOrders").on("click",function (){
-          //   $("#orders").css("display", "block");
-          //   $("#item").css("display", "none");
-          //   $("#customer").css("display", "none");
-          //   $("#home").css("display", "none");
-          // })
-          //
-          // $("#btnHome").on("click",function (){
-          //   $("#home").css("display", "block");
-          //   $("#item").css("display", "none");
-          //   $("#customer").css("display", "none");
-          //   $("#orders").css("display", "none");
-          // })
+          $("#btnItem").on("click",function (){
+            $("#item").css("display", "block");
+            $("#orders").css("display", "none");
+            $("#customer").css("display", "none");
+            $("#home").css("display", "none");
+          })
+
+          $("#btnOrders").on("click",function (){
+            $("#orders").css("display", "block");
+            $("#item").css("display", "none");
+            $("#customer").css("display", "none");
+            $("#home").css("display", "none");
+          })
+
+          $("#btnHome").on("click",function (){
+            $("#home").css("display", "block");
+            $("#item").css("display", "none");
+            $("#customer").css("display", "none");
+            $("#orders").css("display", "none");
+          })
 
 
 

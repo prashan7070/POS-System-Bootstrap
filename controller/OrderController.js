@@ -279,7 +279,6 @@ $('#placeOrder').on('click',function(){
             }
 
 
-
 })
 
 
