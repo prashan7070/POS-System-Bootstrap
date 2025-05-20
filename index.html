@@ -359,23 +359,23 @@
 <!--          </div>-->
 
           <div class="total-section mb-2">
-            <p><strong>Total (Rs):</strong> 292,500</p>
-            <p><strong>Discount:</strong> 15,000</p>
-            <p><strong>Amount:</strong> 277,500</p>
-            <p><strong>Balance:</strong> 2000</p>
+            <p><strong>Total (Rs):</strong> <span id="subTotal"></span></p>
+            <p><strong>Discount:</strong> <span id="subDiscount"></span></p>
+            <p><strong>Amount:</strong> <span id="amountPayed"></span></p>
+            <p><strong>Balance:</strong><span id="balance"></span></p>
           </div>
 
 
 
           <div class="row">
             <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Cash Payment">
+              <input id="cashPayment" type="text" class="form-control" placeholder="Cash Payment">
             </div>
-            <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Card Payment">
-            </div>
+<!--            <div class="col-md-3 mb-2">-->
+<!--              <input id="cardPayment" type="text" class="form-control" placeholder="Card Payment">-->
+<!--            </div>-->
             <div class="col-md-6 d-flex justify-content-end gap-2">
-              <button class="btn btn-success">Place Order</button>
+              <button id="placeOrder" class="btn btn-success">Place Order</button>
               <button class="btn btn-danger">Print Bill</button>
               <button class="btn btn-outline-secondary">Re Print</button>
             </div>

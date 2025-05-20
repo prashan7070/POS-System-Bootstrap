@@ -1,5 +1,14 @@
-import {customer_db , item_db , orders_db , order_details} from "../db/db.js";
+import {customer_db, item_db, orders_db} from "../db/db.js";
 import OrderModel from "../model/OrderModel.js";
+
+
+$(document).ready(function(){
+
+    let date = new Date().toISOString().split('T')[0];
+    $('#order_date').val(date);
+
+})
+
 
 //customer search
 $('#order-search-customer').on('click',function(){
@@ -28,6 +37,8 @@ $('#order-search-customer').on('click',function(){
                 icon: 'error',
                 confirmButtonText: 'Ok'
             })
+
+            $('#input-order-customId').val('');
 
 
         }else {
@@ -103,6 +114,8 @@ $('#order-item-search').on('click',function(){
 let cartArray = [];
 let subTotal = 0;
 let subDiscount = 0;
+let amountPayed = 0;
+let balance = 0 ;
 
 $('#order-addToCart').on('click',function(){
 
@@ -155,6 +168,8 @@ $('#order-addToCart').on('click',function(){
 
             $('#cart-table-tbody').append(cartRow);
 
+            updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance );
+
             $('#input-order-itemId').val('');
             $('#input-order-item_name').val('');
             $('#input-order-unitPrice').val('');
@@ -173,12 +188,11 @@ $('#cart-table-tbody').on('click','.delete-cart-item',function(){
             let $row = $(this).closest('tr');
             let itemId = $row.data('item-id');
 
-
             let index = cartArray.findIndex(item => item.itemId === itemId);
             let itemTotal = cartArray[index].itemTotal;
             let discount = cartArray[index].discount;
             let qty = cartArray[index].qty;
-            subDiscount -= discount*qty;
+            subDiscount -= (discount*qty);
             subTotal -= itemTotal;
             console.log(subTotal);
             console.log(subDiscount);
@@ -186,6 +200,8 @@ $('#cart-table-tbody').on('click','.delete-cart-item',function(){
             cartArray = cartArray.filter(item => item.itemId !== itemId);
 
             $row.remove();
+
+            updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance );
 
 
             Swal.fire({
@@ -197,3 +213,102 @@ $('#cart-table-tbody').on('click','.delete-cart-item',function(){
 
 
 });
+
+
+function updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance ){
+
+            $('#subTotal').text(subTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $('#subDiscount').text(subDiscount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $('#amountPayed').text(amountPayed.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $('#balance').text(balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+
+}
+
+
+$('#placeOrder').on('click',function(){
+
+            let customId = $('#input-order-customId').val();
+            let cash = parseFloat($('#cashPayment').val());
+            let orderDate = $('#order_date').val();
+            let orderId = $('#orderId').val();
+
+
+            if ((cash<=0) || (cash<subTotal) || (cartArray.length===0)  || customId==='' || orderId===''){
+
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Some details are missing or incorrect',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+
+
+            }else {
+
+                amountPayed = cash;
+                let customer = customer_db.find(c=> c.customId === customId);
+                let customerName = customer.name;
+
+                let data = new OrderModel(orderId,orderDate,customId,customerName,cartArray , subTotal , subDiscount ,amountPayed ,balance);
+
+                orders_db.push(data);
+
+                for (let i = 0; i < cartArray.length; i++) {
+
+                    if (cartArray[i].itemId === item_db[i].itemId){
+
+                        let preQty = item_db[i].qty;
+                        let orderQty = cartArray[i].qty;
+                        item_db[i].qty = preQty - orderQty;
+
+                        console.log(item_db[i]);
+
+                    }
+
+
+                }
+
+                balance = amountPayed - subTotal;
+                console.log(balance);
+
+                updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance);
+
+                refreshItemTable();
+
+
+            }
+
+
+
+})
+
+
+function refreshItemTable(){
+
+    $('#item-table-tbody').empty();
+
+    item_db.map(item => {
+
+        let itemId = item.itemId;
+        let item_name = item.item_name;
+        let qty = item.qty;
+        let unitPrice = item.unitPrice;
+
+        let data = `<tr>
+                           <td>${itemId}</td> 
+                           <td>${item_name}</td>
+                           <td>${qty}</td>
+                           <td>${unitPrice}</td>
+                           </tr>`
+
+        $('#item-table-tbody').append(data);
+
+    });
+
+}
+
+
+
+
+
+
