@@ -24,6 +24,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
+
+
             <ul class="navbar-nav ms-auto">
               <li id="btnHome" class="nav-item">
                 <a class="nav-link active" href="#home" onclick="showSection('home')">Home</a>
@@ -38,6 +40,10 @@
                 <a class="nav-link" href="#orders" onclick="showSection('orders')">Orders</a>
               </li>
             </ul>
+
+
+
+
           </div>
         </div>
       </nav>
@@ -243,38 +249,60 @@
 <!--          <h2 class="text-center mb-3">Order Management</h2>-->
           <div class="row mb-2">
             <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Cus. ID">
-              <button class="btn btn-outline-secondary mt-1 w-100">
-                <i class="bi bi-search"></i> Search
+              <input id="input-order-customId" type="text" class="form-control" placeholder="Cus. ID">
+              <button id="order-search-customer" class="btn btn-outline-secondary mt-1 w-100">
+                <i class="bi bi-search"></i> Search Customer
               </button>
             </div>
             <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Order ID">
+              <input id="input-order-custom_name" type="text" class="form-control" placeholder="Customer name">
             </div>
             <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Date" value="2025/04/19">
+              <input id="orderId" type="text" class="form-control" placeholder="Order ID">
+            </div>
+            <div class="col-md-3 mb-2">
+              <input id="order_date" type="text" class="form-control" placeholder="Date" value="2025/04/19">
             </div>
           </div>
+
+
           <div class="row mb-2">
             <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Item ID">
-              <button class="btn btn-outline-secondary mt-1 w-100">
+              <input id="input-order-itemId" type="text" class="form-control" placeholder="Item ID">
+            </div>
+            <div class="col-md-2 mb-2">
+              <button id="order-item-search" class="btn btn-outline-secondary w-100">
                 <i class="bi bi-search"></i> Search
               </button>
             </div>
             <div class="col-md-2 mb-2">
-              <input type="text" class="form-control" placeholder="Quantity">
+              <input id="input-order-item_name" type="text" class="form-control" placeholder="Item name">
             </div>
             <div class="col-md-2 mb-2">
-              <input type="text" class="form-control" placeholder="Unit Price">
+              <input id="input-order-unitPrice" type="text" class="form-control" placeholder="Unit Price">
             </div>
             <div class="col-md-2 mb-2">
-              <input type="text" class="form-control" placeholder="Discount">
+              <input id="input-order-qoh" type="text" class="form-control" placeholder="Quantity on Hand">
             </div>
-            <div class="col-md-3 mb-2">
-              <input type="text" class="form-control" placeholder="Total (Rs)">
+
+          </div>
+
+          <div class="row mb-2">
+
+            <div class="col-md-2 mb-2">
+              <input id="input-discount" type="text" class="form-control" placeholder="Discount">
+            </div>
+            <div class="col-md-2 mb-2">
+              <input id="input-order-qty" type="text" class="form-control" placeholder="Quantity">
+            </div>
+            <div class="col-md-2 mb-2">
+               <button id="order-addToCart" class="btn btn-primary w-100">
+                  Add to Cart
+               </button>
             </div>
           </div>
+
+
           <div class="table-responsive mb-2">
             <table class="table table-striped">
               <thead>
@@ -285,34 +313,60 @@
                 <th>Discount</th>
                 <th>Qty</th>
                 <th>Total (Rs)</th>
+                <th>Action</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <td>I001</td>
-                <td>Laptop</td>
-                <td>150,000</td>
-                <td>5%</td>
-                <td>2</td>
-                <td>285,000</td>
-              </tr>
-              <tr>
-                <td>I002</td>
-                <td>Mouse</td>
-                <td>1,500</td>
-                <td>0%</td>
-                <td>5</td>
-                <td>7,500</td>
-              </tr>
+              <tbody id="cart-table-tbody">
+<!--              <tr>-->
+<!--                <td>I001</td>-->
+<!--                <td>Laptop</td>-->
+<!--                <td>150,000</td>-->
+<!--                <td>5%</td>-->
+<!--                <td>2</td>-->
+<!--                <td>285,000</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td>I002</td>-->
+<!--                <td>Mouse</td>-->
+<!--                <td>1,500</td>-->
+<!--                <td>0%</td>-->
+<!--                <td>5</td>-->
+<!--                <td>7,500</td>-->
+<!--              </tr>-->
               </tbody>
             </table>
           </div>
+
+<!--          <div class="row">-->
+<!--            <div class="col-md-4 mb-3">-->
+<!--              <div class="order-dashboard-card">-->
+<!--                <h3>Total Sales</h3>-->
+<!--                <p>Rs. 1,250,000</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 mb-3">-->
+<!--              <div class="order-dashboard-card">-->
+<!--                <h3>Orders Today</h3>-->
+<!--                <p>45</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 mb-3">-->
+<!--              <div class="order-dashboard-card">-->
+<!--                <h3>Top Item</h3>-->
+<!--                <p>Laptop (15 sold)</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
           <div class="total-section mb-2">
             <p><strong>Total (Rs):</strong> 292,500</p>
             <p><strong>Discount:</strong> 15,000</p>
             <p><strong>Amount:</strong> 277,500</p>
-            <p><strong>Balance:</strong> 0</p>
+            <p><strong>Balance:</strong> 2000</p>
           </div>
+
+
+
           <div class="row">
             <div class="col-md-3 mb-2">
               <input type="text" class="form-control" placeholder="Cash Payment">
@@ -336,6 +390,7 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script type="module" src="controller/CustomerController.js"></script>
       <script type="module" src="controller/ItemController.js"></script>
+      <script type="module" src="controller/OrderController.js"></script>
 
       <script>
 

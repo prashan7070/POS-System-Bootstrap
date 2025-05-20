@@ -7,6 +7,7 @@ body {
     overflow: hidden;
     height: 100vh;
 }
+
 .navbar {
     background-color: #2c3e50;
     padding: 1rem 2rem;
@@ -28,15 +29,20 @@ body {
     color: #3498db !important;
     border-bottom: 2px solid #3498db;
 }
+
+
 .section {
     display: none;
     height: calc(100vh - 70px);
     margin-top: 70px;
     overflow: hidden;
+
 }
+
 .section.active {
     display: block;
 }
+
 .dashboard-section {
     background-color: #f4f7fc;
     padding: 1rem;
@@ -44,6 +50,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
 }
 .dashboard-card {
     background-color: #ffffff;
@@ -65,6 +72,36 @@ body {
     font-weight: 700;
     color: #3498db;
 }
+
+
+/*.order-dashboard-card {*/
+/*    background-color: #ffffff;*/
+/*    border-radius: 15px;*/
+/*    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);*/
+/*    padding: 1rem;*/
+/*    flex: 1;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: space-between;*/
+/*    margin-top: auto;*/
+
+/*}*/
+
+/*.order-dashboard-card h3 {*/
+/*    font-size: 0.8rem;*/
+/*    color: #2c3e50;*/
+/*    margin-bottom: 0.5rem;*/
+/*}*/
+
+/*.order-dashboard-card p {*/
+/*    font-size: 0.8rem;*/
+/*    font-weight: 500;*/
+/*    color: #3498db;*/
+/*}*/
+
+
+
+
 .dashboard-table {
     flex: 2;
     overflow-y: auto;
@@ -79,6 +116,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
 }
 .form-control, .btn {
     border-radius: 10px;
@@ -117,6 +155,7 @@ body {
     background-color: #7f8c8d;
     color: #ffffff;
 }
+
 .table {
     border-radius: 10px;
     overflow: hidden;
@@ -153,12 +192,16 @@ body {
 
 .total-section {
     background-color: #ecf0f1;
-    padding: 0.2rem;
+    padding: 0.5rem;
     border-radius: 8px;
     text-align: right;
     font-size: 0.8rem;
-    line-height: 1;
+    line-height: 0.7;
     margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+
 }
 
 @media (max-width: 768px) {
