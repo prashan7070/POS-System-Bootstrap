@@ -96,11 +96,13 @@ $('#order-item-search').on('click',function(){
             let item_name = obj.item_name;
             let qoh = obj.qty;
             let unitPrice = obj.unitPrice;
+            let discount = obj.discount;
 
 
             $("#input-order-item_name").val(item_name);
             $("#input-order-unitPrice").val(unitPrice);
             $("#input-order-qoh").val(qoh);
+            $("#input-discount").val(discount);
 
 
 
@@ -121,13 +123,13 @@ $('#order-addToCart').on('click',function(){
 
         let itemId = $('#input-order-itemId').val();
         let item_name = $('#input-order-item_name').val();
-        let unitPrice = parseFloat($('#input-order-unitPrice').val());
-        let qty = parseInt($('#input-order-qty').val());
-        let discount = parseInt($('#input-discount').val());
-        let qoh = parseInt($('#input-order-qoh').val())
+        let unitPrice = parseFloat($('#input-order-unitPrice').val()) || 0;
+        let qty = parseInt($('#input-order-qty').val()) || 0;
+        let discount = parseInt($('#input-discount').val()) || 0;
+        let qoh = parseInt($('#input-order-qoh').val()) || 0;
 
 
-        if (itemId ==='' || qty === 0 || qty > qoh ){
+        if (itemId ==='' || qty === 0 || qty > qoh || cartArray.some(i => i.itemId === itemId)){
 
             Swal.fire({
                 title: 'Error!',
@@ -138,25 +140,25 @@ $('#order-addToCart').on('click',function(){
 
         }else{
 
-            let itemTotal = 0;
+                let itemTotal = 0;
 
-            if (discount>0){
-                itemTotal = (unitPrice - discount) * qty;
-                subDiscount+= discount*qty;
-            }else {
-                itemTotal = unitPrice* qty;
-            }
+                if (discount>0){
+                    itemTotal = (unitPrice - discount) * qty;
+                    subDiscount+= discount*qty;
+                }else {
+                    itemTotal = unitPrice* qty;
+                }
 
-            subTotal+=itemTotal;
-            console.log(subTotal);
-            console.log(subDiscount);
+                subTotal+=itemTotal;
+                console.log(subTotal);
+                console.log(subDiscount);
 
-            let cartData = {itemId:itemId,item_name:item_name,unitPrice:unitPrice,discount:discount,qty:qty,itemTotal:itemTotal};
+                let cartData = {itemId:itemId,item_name:item_name,unitPrice:unitPrice,discount:discount,qty:qty,itemTotal:itemTotal};
 
-            cartArray.push(cartData);
-            console.log(cartArray);
+                cartArray.push(cartData);
+                console.log(cartArray);
 
-            let cartRow = `<tr data-item-id="${itemId}">
+                let cartRow = `<tr data-item-id="${itemId}">
                                     <td>${itemId}</td>
                                     <td>${item_name}</td>
                                     <td>${unitPrice}</td>
@@ -166,16 +168,16 @@ $('#order-addToCart').on('click',function(){
                                     <td><button id="button-addtocart-delete" class="btn btn-danger btn-sm delete-cart-item">Delete</button></td>
                                   </tr>`
 
-            $('#cart-table-tbody').append(cartRow);
+                $('#cart-table-tbody').append(cartRow);
 
-            updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance );
+                updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance );
 
-            $('#input-order-itemId').val('');
-            $('#input-order-item_name').val('');
-            $('#input-order-unitPrice').val('');
-            $('#input-order-qty').val('');
-            $('#input-discount').val('');
-            $('#input-order-qoh').val('');
+                $('#input-order-itemId').val('');
+                $('#input-order-item_name').val('');
+                $('#input-order-unitPrice').val('');
+                $('#input-order-qty').val('');
+                $('#input-discount').val('');
+                $('#input-order-qoh').val('');
 
 
         }
@@ -192,7 +194,11 @@ $('#cart-table-tbody').on('click','.delete-cart-item',function(){
             let itemTotal = cartArray[index].itemTotal;
             let discount = cartArray[index].discount;
             let qty = cartArray[index].qty;
-            subDiscount -= (discount*qty);
+
+            if (discount>0){
+                subDiscount -= (discount*qty);
+            }
+
             subTotal -= itemTotal;
             console.log(subTotal);
             console.log(subDiscount);
@@ -228,7 +234,7 @@ function updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance ){
 $('#placeOrder').on('click',function(){
 
             let customId = $('#input-order-customId').val();
-            let cash = parseFloat($('#cashPayment').val());
+            let cash = parseFloat($('#cashPayment').val()) || 0;
             let orderDate = $('#order_date').val();
             let orderId = $('#orderId').val();
 
@@ -338,8 +344,21 @@ function clearFields(){
 
     $('#cashPayment').val('')
 
+    cartArray = [];
+    subTotal = 0;
+    subDiscount = 0;
+    amountPayed = 0;
+    balance = 0 ;
+
 
 }
+
+
+
+
+
+
+
 
 
 

@@ -13,12 +13,14 @@ function loadItems(){
         let item_name = item.item_name;
         let qty = item.qty;
         let unitPrice = item.unitPrice;
+        let discount = item.discount;
 
         let data = `<tr>
                            <td>${itemId}</td> 
                            <td>${item_name}</td>
                            <td>${qty}</td>
                            <td>${unitPrice}</td>
+                           <td>${discount}</td>
                            </tr>`
 
         $('#item-table-tbody').append(data);
@@ -34,6 +36,7 @@ $('#item-save').on('click', function(){
     let item_name = $('#item_name').val();
     let qty = $('#qty').val();
     let unitPrice = $('#unitPrice').val();
+    let discount = $('#discount').val() ||0;
     let isExistsItem = item_db.some(i => i.itemId === itemId);
 
     if (itemId==='' || item_name==='' || qty==='' || unitPrice==='' || isExistsItem){
@@ -47,7 +50,7 @@ $('#item-save').on('click', function(){
 
     }else {
 
-        let item_data = new ItemModel( itemId , item_name , qty , unitPrice);
+        let item_data = new ItemModel( itemId , item_name , qty , unitPrice ,discount);
         item_db.push(item_data);
 
         loadItems();
@@ -62,6 +65,7 @@ $('#item-save').on('click', function(){
         $('#item_name').val('');
         $('#qty').val('');
         $('#unitPrice').val('');
+        $('#discount').val('');
 
     }
 
@@ -104,6 +108,8 @@ $('#item-delete').on('click', function(){
             $('#item_name').val('');
             $('#qty').val('');
             $('#unitPrice').val('');
+            $('#discount').val('');
+
 
             Swal.fire({
                 title: "deleted Successfully!",
@@ -127,11 +133,14 @@ $('#item-table-tbody').on('click','tr',function(){
     let item_name = obj.item_name;
     let qty = obj.qty;
     let unitPrice = obj.unitPrice;
+    let discount = obj.discount;
 
     $('#itemId').val(itemId);
     $('#item_name').val(item_name);
     $('#qty').val(qty);
     $('#unitPrice').val(unitPrice);
+    $('#discount').val(discount);
+
 
 
 });
@@ -143,6 +152,9 @@ $('#item-update').on('click', function(){
     let item_name = $('#item_name').val();
     let qty = $('#qty').val();
     let unitPrice = $('#unitPrice').val();
+    let discount = $('#discount').val() || 0;
+
+
 
     if (itemId==='' || item_name==='' || qty==='' || unitPrice===''){
 
@@ -172,6 +184,7 @@ $('#item-update').on('click', function(){
                                item_name: item_name,
                                qty: qty,
                                unitPrice: unitPrice,
+                               discount: discount,
 
                              };
 
@@ -229,11 +242,13 @@ $('#item-search').on('click',function(){
             let item_name = obj.item_name;
             let qty = obj.qty;
             let unitPrice = obj.unitPrice;
+            let discount = obj.discount;
 
             $("#itemId").val(itemId);
             $("#item_name").val(item_name);
             $("#qty").val(qty);
             $("#unitPrice").val(unitPrice);
+            $("#discount").val(discount);
 
 
         }
@@ -249,6 +264,7 @@ $('#item-reset').on('click',function(){
     $("#item_name").val('');
     $("#qty").val('');
     $("#unitPrice").val('');
+    $("#discount").val('');
 
 
 })
