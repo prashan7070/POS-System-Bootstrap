@@ -232,8 +232,9 @@ $('#placeOrder').on('click',function(){
             let orderDate = $('#order_date').val();
             let orderId = $('#orderId').val();
 
+            let isExistsOrder = orders_db.some(o=>o.orderId === orderId);
 
-            if ((cash<=0) || (cash<subTotal) || (cartArray.length===0)  || customId==='' || orderId===''){
+            if ((cash<=0) || (cash<subTotal) || (cartArray.length===0)  || customId==='' || orderId==='' || isExistsOrder){
 
                 Swal.fire({
                     title: 'Error!',
@@ -247,7 +248,7 @@ $('#placeOrder').on('click',function(){
 
                 amountPayed = cash;
                 let customer = customer_db.find(c=> c.customId === customId);
-                let customerName = customer.name;
+                let customerName = customer.custom_name;
 
                 let data = new OrderModel(orderId,orderDate,customId,customerName,cartArray , subTotal , subDiscount ,amountPayed ,balance);
 
@@ -275,6 +276,21 @@ $('#placeOrder').on('click',function(){
 
                 refreshItemTable();
 
+                Swal.fire({
+                    title: "<strong>Order Success!</strong>",
+                    icon: "success",
+                    html: `OrderId : <b>${orderId}</b><br>Cash : <b>${amountPayed}</b><br> Balance : <b>${balance}</b><br> Discount : <b>${subDiscount}`,
+                    showCloseButton: true,
+                    // showCancelButton: true,
+                    focusConfirm: true,
+                    confirmButtonText: `<i class="fa fa-thumbs-up"></i> Done`,
+                    confirmButtonAriaLabel: "Thumbs up, great!",
+                    // cancelButtonText: `<i class="fa fa-thumbs-down"></i>`,
+                    // cancelButtonAriaLabel: "Thumbs down"
+                });
+
+
+                clearFields();
 
             }
 
@@ -303,6 +319,25 @@ function refreshItemTable(){
         $('#item-table-tbody').append(data);
 
     });
+
+}
+
+
+function clearFields(){
+
+    $('#cart-table-tbody').empty();
+
+    $('#input-order-customId').val('');
+    $("#input-order-custom_name").val('');
+    $('#orderId').val('');
+
+    $('#subTotal').text('');
+    $('#subDiscount').text('');
+    $('#amountPayed').text('');
+    $('#balance').text('');
+
+    $('#cashPayment').val('')
+
 
 }
 

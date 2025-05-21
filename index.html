@@ -43,7 +43,7 @@
 
             <ul class="navbar-nav ms-auto">
               <li id="btnHome" class="nav-item">
-                <a class="nav-link active" href="#home">Home</a>
+                <a id="homeButton" class="nav-link active" href="#home">Home</a>
               </li>
               <li id="btnCustomer" class="nav-item">
                 <a class="nav-link" href="#customer">Customer</a>
@@ -69,19 +69,19 @@
             <div class="col-md-4 mb-3">
               <div class="dashboard-card">
                 <h3>Total Sales</h3>
-                <p>Rs. 1,250,000</p>
+                <p id="total_sales"></p>
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <div class="dashboard-card">
-                <h3>Orders Today</h3>
-                <p>45</p>
+                <h3>Orders</h3>
+                <p id="orders_count"></p>
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <div class="dashboard-card">
-                <h3>Top Item</h3>
-                <p>Laptop (15 sold)</p>
+                <h3>Customers</h3>
+                <p id="customer_count"></p>
               </div>
             </div>
           </div>
@@ -94,24 +94,25 @@
                     <thead>
                     <tr>
                       <th>Order ID</th>
-                      <th>Customer</th>
+                      <th>Customer ID</th>
+                      <th>Customer Name</th>
                       <th>Amount</th>
                       <th>Date</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                      <td>O001</td>
-                      <td>John Doe</td>
-                      <td>Rs. 285,000</td>
-                      <td>2025/04/19</td>
-                    </tr>
-                    <tr>
-                      <td>O002</td>
-                      <td>Jane Smith</td>
-                      <td>Rs. 7,500</td>
-                      <td>2025/04/19</td>
-                    </tr>
+                    <tbody id="dashboard-table-tbody">
+<!--                    <tr>-->
+<!--                      <td>O001</td>-->
+<!--                      <td>John Doe</td>-->
+<!--                      <td>Rs. 285,000</td>-->
+<!--                      <td>2025/04/19</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                      <td>O002</td>-->
+<!--                      <td>Jane Smith</td>-->
+<!--                      <td>Rs. 7,500</td>-->
+<!--                      <td>2025/04/19</td>-->
+<!--                    </tr>-->
                     </tbody>
                   </table>
                 </div>
@@ -384,6 +385,11 @@
             <div class="col-md-3 mb-2">
               <input id="cashPayment" type="text" class="form-control" placeholder="Cash Payment">
             </div>
+            <div class="col-md-2 mb-2">
+              <button id="order-check" class="btn btn-outline-secondary w-100">
+                <i class="bi bi-search"></i> check
+              </button>
+            </div>
 <!--            <div class="col-md-3 mb-2">-->
 <!--              <input id="cardPayment" type="text" class="form-control" placeholder="Card Payment">-->
 <!--            </div>-->
@@ -404,6 +410,7 @@
       <script type="module" src="controller/CustomerController.js"></script>
       <script type="module" src="controller/ItemController.js"></script>
       <script type="module" src="controller/OrderController.js"></script>
+      <script type="module" src="controller/DashBoardController.js"></script>
 
       <script>
 

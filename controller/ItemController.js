@@ -34,8 +34,9 @@ $('#item-save').on('click', function(){
     let item_name = $('#item_name').val();
     let qty = $('#qty').val();
     let unitPrice = $('#unitPrice').val();
+    let isExistsItem = item_db.some(i => i.itemId === itemId);
 
-    if (itemId==='' || item_name==='' || qty==='' || unitPrice===''){
+    if (itemId==='' || item_name==='' || qty==='' || unitPrice==='' || isExistsItem){
 
         Swal.fire({
             title: 'Error!',

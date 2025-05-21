@@ -32,8 +32,10 @@ $("#customer-save").on('click',function(){
     let custom_name = $('#cust_name').val();
     let address = $('#address').val();
     let phone = $('#mobile').val();
+    let isExistCustomer = customer_db.some(c=> c.customId === customId);
 
-    if (customId==='' || custom_name==='' || address==='' || mobile===''){
+
+    if (customId==='' || custom_name==='' || address==='' || phone==='' || isExistCustomer){
 
         Swal.fire({
             title: 'Error!',

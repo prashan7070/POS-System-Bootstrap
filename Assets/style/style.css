@@ -1,3 +1,7 @@
+/* POS System - Main Stylesheet
+   Author: Custom CSS based on requested design
+   Description: Modern, simple and stylish CSS for POS system
+*/
 
 :root {
     --primary-color: #4a6bff;
@@ -68,9 +72,9 @@ body {
     background-color: var(--primary-color);
 }
 
-
+/* Sections - General */
 .section {
-    margin-top: 70px;
+    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
     padding: 15px 0;
 }
 
@@ -144,7 +148,7 @@ body {
     margin-bottom: 0;
     border-collapse: separate;
     border-spacing: 0;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .table thead th {
@@ -153,12 +157,12 @@ body {
     border-bottom: 1px solid #dee2e6;
     color: var(--secondary-color);
     font-weight: 600;
-    padding: 8px 10px;
-    font-size: 13px;
+    padding: 10px 12px;
+    font-size: 14px;
 }
 
 .table tbody td {
-    padding: 6px 10px;
+    padding: 8px 12px;
     vertical-align: middle;
     border-top: 1px solid #dee2e6;
 }
@@ -179,10 +183,10 @@ body {
 
 /* Form controls */
 .form-control {
-    height: calc(2.2rem + 2px);
+    height: calc(2.3rem + 2px);
     border-radius: var(--border-radius);
     border: 1px solid #ced4da;
-    padding: 6px 12px;
+    padding: 8px 12px;
     transition: var(--transition);
     font-size: 14px;
 }
@@ -199,7 +203,7 @@ body {
 /* Buttons */
 .btn {
     border-radius: var(--border-radius);
-    padding: 6px 12px;
+    padding: 7px 14px;
     font-weight: 500;
     transition: var(--transition);
     font-size: 14px;
@@ -251,23 +255,27 @@ body {
 
 #orders .content-section {
     padding: 12px;
-    max-height: calc(100vh - 80px);
-    overflow: hidden;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
 }
 
+/* Make only cart table scrollable - fixed height */
 #orders .table-responsive {
-    max-height: 180px;
+    max-height: 200px;
     overflow-y: auto;
     margin-bottom: 10px;
+    /* Force table to take only its needed space */
+    flex: 0 0 auto;
 }
 
 #orders table {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #orders .table thead th {
-    padding: 6px 8px;
-    font-size: 12px;
+    padding: 8px 10px;
+    font-size: 14px;
     position: sticky;
     top: 0;
     background-color: #f8f9fa;
@@ -275,54 +283,59 @@ body {
 }
 
 #orders .table tbody td {
-    padding: 4px 8px;
+    padding: 6px 10px;
 }
 
 .total-section {
     background-color: #f8f9fa;
     border-radius: var(--border-radius);
-    padding: 8px 12px;
+    padding: 10px 15px;
     margin-bottom: 12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Make sure this doesn't expand */
+    flex: 0 0 auto;
 }
 
 .total-section p {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
-    font-size: 13px;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .total-section p:last-child {
     margin-bottom: 0;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--primary-color);
 }
 
-
+/* Additional order section optimizations */
 #orders .form-control {
-    height: calc(2rem + 2px);
+    height: calc(2.2rem + 2px);
 }
 
+/* Extra customizations for better viewport fit */
 #home.section {
-    margin-top: 70px;
+    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
 }
 
 #customer.section, #item.section {
-    margin-top: 70px;
+    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
 }
 
-
+/* Custom style for action buttons in cart table */
 #cart-table-tbody .btn-sm {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
 }
 
+/* Make sure all sections have proper spacing with fixed navbar */
 body {
     padding-top: 10px;
 }
 
+/* Fix for jQuery display toggling and active states */
 #btnCustomer.active a, #btnItem.active a, #btnOrders.active a, #btnHome.active a {
     color: var(--primary-color);
 }
@@ -337,17 +350,36 @@ body {
     background-color: var(--primary-color);
 }
 
+/* Specific cart table styling to ensure scrolling works */
+#cart-table-tbody {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+/* Set specific height for cart table container only */
+#orders .table-responsive {
+    border: 1px solid #eee;
+}
+
+/* Ensure cart action buttons are accessible */
+#cart-table-tbody td:last-child {
+    white-space: nowrap;
+}
+
+/* Enhance cart management in orders section */
 #orders .cart-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Make scrollbars less intrusive for order section */
 #orders .table-responsive::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
 
+/* Responsive adjustments - Maintained but modified */
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 16px;
@@ -376,6 +408,7 @@ body {
     }
 }
 
+/* Active section display */
 #home.active,
 #customer.active,
 #item.active,
@@ -383,10 +416,12 @@ body {
     display: block;
 }
 
+/* Utility classes */
 .gap-2 {
     gap: 0.5rem !important;
 }
 
+/* Animation effects */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -396,6 +431,7 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Table hover effects */
 .table tbody tr {
     transition: var(--transition);
 }
@@ -404,10 +440,12 @@ body {
     background-color: rgba(74, 107, 255, 0.05);
 }
 
+/* Cart item styling */
 #cart-table-tbody tr {
     position: relative;
 }
 
+/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;

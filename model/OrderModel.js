@@ -6,9 +6,6 @@ export default class OrderModel {
             this.date = date;
             this.customId = customId;
             this.custom_name = custom_name;
-            // this.itemId = itemId;
-            // this.item_name = item_name;
-            // this.qty = qty;
             this.cartArray = cartArray;
             this.total = total;
             this.discount = discount;
