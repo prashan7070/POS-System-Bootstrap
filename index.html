@@ -10,6 +10,7 @@
   <link rel="icon" type="image/icon" href="">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="Assets/style/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </head>
 
@@ -352,10 +353,24 @@
 <!--            </div>-->
             <div class="col-md-6 d-flex justify-content-end gap-2">
               <button id="placeOrder" class="btn btn-success">Place Order</button>
-              <button class="btn btn-danger">Print Bill</button>
-              <button class="btn btn-outline-secondary">Re Print</button>
+              <button id="generateReport" class="btn btn-danger">Generate Report</button>
+              <button id="printInvoice" class="btn btn-outline-secondary">Print Invoice</button>
             </div>
           </div>
+
+
+          <!-- Report Modal -->
+          <div id="reportModal" class="modal" style="display:none;">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Order Report</h2>
+              <div id="reportContent"></div>
+              <button id="downloadPdf">Download PDF</button>
+              <button id="printReport">Print</button>
+            </div>
+          </div>
+
+
         </div>
       </section>
 

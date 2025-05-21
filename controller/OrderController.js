@@ -278,6 +278,25 @@ $('#placeOrder').on('click',function(){
                 balance = amountPayed - subTotal;
                 console.log(balance);
 
+
+                // Generate Invoice
+                let invoiceHtml = `
+            <h2>Invoice</h2>
+            <p>Order ID: ${orderId}</p>
+            <p>Customer: ${customerName} (${customId})</p>
+            <p>Date: ${orderDate}</p>
+            <table>
+                <tr><th>Item</th><th>Qty</th><th>Total (Rs)</th></tr>
+                ${cartArray.map(item => `<tr><td>${item.item_name}</td><td>${item.qty}</td><td>${item.itemTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td></tr>`).join('')}
+            </table>
+            <p>Sub Total: Rs. ${subTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+            <p>Discount: Rs. ${subDiscount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+            <p>Payment: Cash Rs. ${amountPayed.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+            <p>Balance: Rs. ${balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+        `;
+                localStorage.setItem('invoice', invoiceHtml);
+
+
                 updateOrderDashboard(subTotal,subDiscount, amountPayed ,balance);
 
                 refreshItemTable();
@@ -355,7 +374,58 @@ function clearFields(){
 
 
 
+// Generate Report
+$('#generateReport').on('click', function() {
+    let reportHtml = "<h3>Order Summary</h3><ul>";
+    orders_db.forEach(order => {
+        reportHtml += `<li>Order ID: ${order.orderId}, Customer: ${order.customId} (${order.custom_name}), Total: Rs. ${order.total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</li>`;
+        order.cartArray.forEach(item => {
+            reportHtml += `<ul><li>Item: ${item.item_name}, Qty: ${item.qty}, Total: Rs. ${item.itemTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</li></ul>`;
+        });
+    });
+    reportHtml += "</ul>";
 
+    $('#reportContent').html(reportHtml);
+    $('#reportModal').css('display', 'flex');
+
+
+    $('.close').on('click', function() {
+        $('#reportModal').css('display', 'none');
+    });
+
+
+    $('#downloadPdf').on('click', function() {
+        const { jsPDF } = window.jspdf;
+        let doc = new jsPDF();
+        doc.text(reportHtml.replace(/<[^>]+>/g, ''), 10, 10); // Remove HTML tags for PDF
+        doc.save('order_report.pdf');
+    });
+
+    /
+    $('#printReport').on('click', function() {
+        let printWindow = window.open('', '', 'height=600,width=800');
+        printWindow.document.write('<html><head><title>Order Report</title></head><body>');
+        printWindow.document.write(reportHtml);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+});
+
+
+
+// Print Invoice
+$('#printInvoice').on('click', function() {
+    let invoiceHtml = localStorage.getItem('invoice');
+    let printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write('<html><head><title>Invoice</title></head><body>');
+    printWindow.document.write('<style>table { border-collapse: collapse; width: 100%; } th, td { border: 1px solid black; padding: 8px; }</style>');
+    printWindow.document.write(invoiceHtml);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+    $('#printInvoice').css('display', 'none'); // Hide after print
+});
 
 
 
