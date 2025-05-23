@@ -1,4 +1,4 @@
-import {customer_db, orders_db} from "../db/db.js";
+import {orders_db} from "../db/db.js";
 
 
 

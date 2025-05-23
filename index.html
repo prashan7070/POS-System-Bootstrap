@@ -28,20 +28,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
 
 
-<!--            <ul class="navbar-nav ms-auto">-->
-<!--              <li id="btnHome" class="nav-item">-->
-<!--                <a class="nav-link active" href="#home" onclick="showSection('home')">Home</a>-->
-<!--              </li>-->
-<!--              <li id="btnCustomer" class="nav-item">-->
-<!--                <a class="nav-link" href="#customer" onclick="showSection('customer')">Customer</a>-->
-<!--              </li>-->
-<!--              <li id="btnItem" class="nav-item">-->
-<!--                <a class="nav-link" href="#item" onclick="showSection('item')">Item</a>-->
-<!--              </li>-->
-<!--              <li id="btnOrders" class="nav-item">-->
-<!--                <a class="nav-link" href="#orders" onclick="showSection('orders')">Orders</a>-->
-<!--              </li>-->
-<!--            </ul>-->
+
 
             <ul class="navbar-nav ms-auto">
               <li id="btnHome" class="nav-item">
@@ -417,7 +404,6 @@
                 </tr>
                 </thead>
                 <tbody id="orderHistory-table-tbody">
-                <!-- Order summary data will be populated here -->
                 </tbody>
               </table>
             </div>
@@ -439,7 +425,6 @@
                 </tr>
                 </thead>
                 <tbody id="orderDetails-table-tbody">
-                <!-- Order details data will be populated here -->
                 </tbody>
               </table>
             </div>
@@ -456,24 +441,10 @@
       <script type="module" src="controller/ItemController.js"></script>
       <script type="module" src="controller/OrderController.js"></script>
       <script type="module" src="controller/DashBoardController.js"></script>
-<!--      <script type="module" src="controller/DashBoardController.js"></script>-->
       <script type="module" src="controller/OrderHistoryController.js"></script>
 
       <script>
 
-          // function showSection(sectionId) {
-          //   document.querySelectorAll('.section').forEach(section => {
-          //     section.classList.remove('active');
-          //   });
-          //   document.querySelectorAll('.nav-link').forEach(link => {
-          //     link.classList.remove('active');
-          //   });
-          //   document.getElementById(sectionId).classList.add('active');
-          //   document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
-          // }
-          // document.addEventListener('DOMContentLoaded', () => {
-          //   showSection('home');
-          // })
 
           $("#home").css("display", "block");
           $("#customer").css("display", "none");
