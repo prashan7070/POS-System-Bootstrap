@@ -498,3 +498,270 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+
+/* Order History Section Styles */
+#orderHistory.section {
+    margin-top: 70px; /* Adjusted to accommodate fixed navbar */
+}
+
+.order-history-table-wrapper,
+.order-details-table-wrapper {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.order-history-table-wrapper h4,
+.order-details-table-wrapper h4 {
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* Order History Tables */
+#orderHistory .table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    margin-bottom: 0;
+}
+
+#orderHistory .table {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+#orderHistory .table thead th {
+    background-color: #f8f9fa;
+    border-top: none;
+    border-bottom: 2px solid #dee2e6;
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 12px 10px;
+    font-size: 13px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+#orderHistory .table tbody td {
+    padding: 10px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+    font-size: 13px;
+}
+
+/* Status badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Action buttons in order history */
+#orderHistory .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 4px;
+}
+
+#orderHistory .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+#orderHistory .btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+/* Search section styling */
+#orderHistory .input-group {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+#orderHistory .input-group .form-control {
+    border-right: none;
+    box-shadow: none;
+}
+
+#orderHistory .input-group .btn {
+    border-left: none;
+    background-color: white;
+    border-color: #ced4da;
+}
+
+#orderHistory .input-group .btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Highlight selected order row */
+#orderHistory .table tbody tr.selected {
+    background-color: rgba(74, 107, 255, 0.1);
+}
+
+#orderHistory .table tbody tr:hover {
+    background-color: rgba(74, 107, 255, 0.05);
+    cursor: pointer;
+}
+
+/* Empty state styling */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--secondary-color);
+}
+
+.empty-state i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state h5 {
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.empty-state p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+/* Responsive design for Order History */
+@media (max-width: 1200px) {
+    #orderHistory .table thead th,
+    #orderHistory .table tbody td {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+
+    .order-history-table-wrapper,
+    .order-details-table-wrapper {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    #orderHistory .table-responsive {
+        max-height: 300px;
+    }
+
+    .order-history-table-wrapper h4,
+    .order-details-table-wrapper h4 {
+        font-size: 16px;
+    }
+
+    #orderHistory .table thead th {
+        font-size: 11px;
+        padding: 8px 4px;
+    }
+
+    #orderHistory .table tbody td {
+        font-size: 11px;
+        padding: 6px 4px;
+    }
+
+    .order-history-table-wrapper,
+    .order-details-table-wrapper {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    /* Hide less important columns on mobile */
+    #orderHistory .table th:nth-child(2),
+    #orderHistory .table td:nth-child(2),
+    #orderHistory .table th:nth-child(6),
+    #orderHistory .table td:nth-child(6) {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    #orderHistory .input-group {
+        flex-direction: column;
+    }
+
+    #orderHistory .input-group .btn {
+        border-left: 1px solid #ced4da;
+        border-top: none;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        margin-top: -1px;
+    }
+
+    #orderHistory .input-group .form-control {
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        border-bottom: none;
+    }
+
+    .order-history-table-wrapper,
+    .order-details-table-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Custom scrollbar for order history tables */
+#orderHistory .table-responsive::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+#orderHistory .table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#orderHistory .table-responsive::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+#orderHistory .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Loading animation */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -401,7 +401,6 @@ $('#generateReport').on('click', function() {
         doc.save('order_report.pdf');
     });
 
-    /
     $('#printReport').on('click', function() {
         let printWindow = window.open('', '', 'height=600,width=800');
         printWindow.document.write('<html><head><title>Order Report</title></head><body>');
